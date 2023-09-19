@@ -8,12 +8,14 @@ import AuthUser from "../../Components/AuthUser";
 import axios from "axios";
 
 function MessagePage() {
+  // Define state variables
   const [visible, setvisible] = useState(false);
   const [userData, setUserData] = useState([]);
-  const { http, getToken, user,getUser } = AuthUser();
+  const { http, getToken, user, getUser } = AuthUser();
   const [selectedUser, setSelectedUser] = useState("");
-  const currentuser=getUser()
+  const currentuser = getUser();
 
+  // Function to fetch chat users
   const chatUserHandler = () => {
     axios.defaults.headers.common["Authorization"] = `Bearer ${getToken()}`;
     axios
@@ -27,8 +29,13 @@ function MessagePage() {
       });
   };
 
-  const newuserData=userData.filter((value)=>value.username!==currentuser.username)
-  useEffect((e) => {
+  // Filter out the current user from the list of chat users
+  const newuserData = userData.filter(
+    (value) => value.username !== currentuser.username
+  );
+
+  useEffect(() => {
+    // Fetch chat users on component mount
     chatUserHandler();
   }, []);
 
@@ -68,36 +75,39 @@ function MessagePage() {
                       overflowY: "scroll",
                     }}
                   >
-                    {newuserData
-                      // .slice(userData.length - 10, userData.length)
-                      .map((value, key) => {
-                        const { id, username, email } = value;
-                        return (
-                          <div
-                            key={key}
-                            className=" d-flex align-items-start justify-content-between mt-4"
-                            onClick={() => {
-                              setSelectedUser(value);
-                              setvisible(true);
-                            }}
-                          >
-                            <div className=" d-flex align-items-center">
-                              <img src={girlSuzana} height="10%" width="10%" alt="" />
-                              <div className="ps-3">
-                                <h2 className=" ff_primary fw-normal fs_lg text_dark mb-0">
-                                  {username}
-                                </h2>
-                                <p className=" ff_primary fw-normal fs_xsm text_darktertiary mb-0">
-                                  {email}
-                                </p>
-                              </div>
+                    {newuserData.map((value, key) => {
+                      const { id, username, email } = value;
+                      return (
+                        <div
+                          key={key}
+                          className=" d-flex align-items-start justify-content-between mt-4"
+                          onClick={() => {
+                            setSelectedUser(value);
+                            setvisible(true);
+                          }}
+                        >
+                          <div className=" d-flex align-items-center">
+                            <img
+                              src={girlSuzana}
+                              height="10%"
+                              width="10%"
+                              alt=""
+                            />
+                            <div className="ps-3">
+                              <h2 className=" ff_primary fw-normal fs_lg text_dark mb-0">
+                                {username}
+                              </h2>
+                              <p className=" ff_primary fw-normal fs_xsm text_darktertiary mb-0">
+                                {email}
+                              </p>
                             </div>
-                            <h4 className=" ff_primary fw-normal fs_xsm text_darktertiary mb-0">
-                              Just Now
-                            </h4>
                           </div>
-                        );
-                      })}
+                          <h4 className=" ff_primary fw-normal fs_xsm text_darktertiary mb-0">
+                            Just Now
+                          </h4>
+                        </div>
+                      );
+                    })}
                   </div>
                 </div>
               </div>

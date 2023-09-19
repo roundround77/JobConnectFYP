@@ -15,22 +15,29 @@ import AuthUser from "../../Components/AuthUser";
 
 function ApplicationTracking() {
   const { user } = AuthUser();
+
   useEffect(() => {
+    // Scroll to the top when the component is mounted
     window.scrollTo(0, 0);
   }, []);
+
   return (
     <>
+      {/* Application Tracking Section */}
       <section className="py-5">
         <Container>
+          {/* Breadcrumbs */}
           <p className=" ff_primary fw-normal fs_lg text_darktertiary">
             <Link className="text_darktertiary" to="/">
               Home{" "}
             </Link>
             <img src={Arrow} alt="Arrow" /> Application Tracking
           </p>
+          {/* Page Title */}
           <h2 className="ff_primary fw-bold fs_8xl text_dark">
-            Job Application status{" "}
+            Job Application status
           </h2>
+          {/* Conditional content based on user type */}
           {user.is_client ? (
             <>
               <p className=" ff_primary fw-normal fs_lg text_darktertiary">
@@ -42,11 +49,13 @@ function ApplicationTracking() {
               </p>
               <div className=" d-flex align-items-center">
                 <NavLink to=".">
+                  {/* Button for recruiter actions */}
                   <button className=" py-2 px-3 rounded-pill ff_primary fw-normal fs_lg text_lowsecondary buttonBorder bg-transparent">
                     Recruiter Actions(0)
                   </button>
                 </NavLink>
                 <NavLink to="/ApplicationTracking/Application">
+                  {/* Button for job applications */}
                   <button className=" py-2 px-3 rounded-pill ff_primary fw-normal fs_lg text_secondary ms-3 buttonBorder bg_semiprimary">
                     Applied on Job Connect(5)
                   </button>
@@ -62,6 +71,7 @@ function ApplicationTracking() {
               to get job seekers attention
             </p>
           )}
+          {/* Nested routes */}
           <Outlet />
         </Container>
       </section>

@@ -21,6 +21,8 @@ function DesignCreative() {
   const { iid } = useParams();
   const [PostData, setPostData] = useState({});
   const { http, getToken, user } = AuthUser();
+  
+  // Slick settings for the slider
   const settings = {
     dots: true,
     infinite: true,
@@ -46,6 +48,7 @@ function DesignCreative() {
     ],
   };
 
+  // Function to handle the post request
   const postHandler = (id) => {
     axios.defaults.headers.common["Authorization"] = `Bearer ${getToken()}`;
     axios
@@ -61,12 +64,14 @@ function DesignCreative() {
   };
 
   useEffect(() => {
+    // Redirect user to home if not a client
     if (!user.is_client) {
       navigate("/");
     }
   }, []);
 
   useEffect((e) => {
+    // Scroll to the top and fetch post data
     window.scrollTo(0, 0);
     postHandler(iid);
   }, []);
@@ -160,6 +165,7 @@ function DesignCreative() {
                       {jobRole}{" "}
                     </h2>
                     <Row className="">
+                      {/* Repeat this section as needed */}
                       <Col xs={6} lg={4} className="mt-4">
                         <div className="d-flex align-items-center">
                           <img src={DatePostedimg} alt="" />
@@ -173,135 +179,25 @@ function DesignCreative() {
                           </div>
                         </div>
                       </Col>
-                      <Col xs={6} lg={4} className="mt-4">
-                        <div className="d-flex align-items-center">
-                          <img src={DatePostedimg} alt="" />
-                          <div className="ps-2 ps-sm-3">
-                            <h2 className=" ff_primary fw-medium fs_lg text_dark mb-0">
-                              {DatePostedHeading}{" "}
-                            </h2>
-                            <p className=" ff_primary fw-normal fs_lg text_light mb-0">
-                              {Date}
-                            </p>
-                          </div>
-                        </div>
-                      </Col>
-                      <Col xs={6} lg={4} className="mt-4">
-                        <div className="d-flex align-items-center">
-                          <img src={DatePostedimg} alt="" />
-                          <div className="ps-2 ps-sm-3">
-                            <h2 className=" ff_primary fw-medium fs_lg text_dark mb-0">
-                              {DatePostedHeading}{" "}
-                            </h2>
-                            <p className=" ff_primary fw-normal fs_lg text_light mb-0">
-                              {Date}
-                            </p>
-                          </div>
-                        </div>
-                      </Col>
-                      <Col xs={6} lg={4} className="mt-4">
-                        <div className="d-flex align-items-center">
-                          <img src={DatePostedimg} alt="" />
-                          <div className="ps-2 ps-sm-3">
-                            <h2 className=" ff_primary fw-medium fs_lg text_dark mb-0">
-                              {DatePostedHeading}{" "}
-                            </h2>
-                            <p className=" ff_primary fw-normal fs_lg text_light mb-0">
-                              {Date}
-                            </p>
-                          </div>
-                        </div>
-                      </Col>
-                      <Col xs={6} lg={4} className="mt-4">
-                        <div className="d-flex align-items-center">
-                          <img src={DatePostedimg} alt="" />
-                          <div className="ps-2 ps-sm-3">
-                            <h2 className=" ff_primary fw-medium fs_lg text_dark mb-0">
-                              {DatePostedHeading}{" "}
-                            </h2>
-                            <p className=" ff_primary fw-normal fs_lg text_light mb-0">
-                              {Date}
-                            </p>
-                          </div>
-                        </div>
-                      </Col>
-                      <Col xs={6} lg={4} className="mt-4">
-                        <div className="d-flex align-items-center">
-                          <img src={DatePostedimg} alt="" />
-                          <div className="ps-2 ps-sm-3">
-                            <h2 className=" ff_primary fw-medium fs_lg text_dark mb-0">
-                              {DatePostedHeading}{" "}
-                            </h2>
-                            <p className=" ff_primary fw-normal fs_lg text_light mb-0">
-                              {Date}
-                            </p>
-                          </div>
-                        </div>
-                      </Col>
-                      <Col xs={6} lg={4} className="mt-4">
-                        <div className="d-flex align-items-center">
-                          <img src={DatePostedimg} alt="" />
-                          <div className="ps-2 ps-sm-3">
-                            <h2 className=" ff_primary fw-medium fs_lg text_dark mb-0">
-                              {DatePostedHeading}{" "}
-                            </h2>
-                            <p className=" ff_primary fw-normal fs_lg text_light mb-0">
-                              {Date}
-                            </p>
-                          </div>
-                        </div>
-                      </Col>
-                      <Col xs={6} lg={4} className="mt-4">
-                        <div className="d-flex align-items-center">
-                          <img src={DatePostedimg} alt="" />
-                          <div className="ps-2 ps-sm-3">
-                            <h2 className=" ff_primary fw-medium fs_lg text_dark mb-0">
-                              {DatePostedHeading}{" "}
-                            </h2>
-                            <p className=" ff_primary fw-normal fs_lg text_light mb-0">
-                              {Date}
-                            </p>
-                          </div>
-                        </div>
-                      </Col>
-                      <Col xs={6} lg={4} className="mt-4">
-                        <div className="d-flex align-items-center">
-                          <img src={DatePostedimg} alt="" />
-                          <div className="ps-2 ps-sm-3">
-                            <h2 className=" ff_primary fw-medium fs_lg text_dark mb-0">
-                              {DatePostedHeading}{" "}
-                            </h2>
-                            <p className=" ff_primary fw-normal fs_lg text_light mb-0">
-                              {Date}
-                            </p>
-                          </div>
-                        </div>
-                      </Col>
+                      {/* Repeat section ends */}
                     </Row>
                     
+                    {/* Description section */}
                     <h2 className=" pt-5 ff_primary fw-medium fs_4xl text_dark">
-                    <p className="fs_xl ff_secondry">Description</p>
+                      <p className="fs_xl ff_secondry">Description</p>
                       {PostData.description}
                     </h2>
                 
-                 
+                    {/* Skills section */}
                     <h2 className=" pt-5 ff_primary fw-medium fs_xl text_dark">
                       Skills
                     </h2>
                     <h4 className=" ff_primary fw-normal fs_md text_semiprimary pt-4">
                       {PostData.skills}
                     </h4>
-
-          
-                  
-
-  
-
-                    
-                   
-                   
                   </Col>
                   <Col xs={12} md={4} lg={5}>
+                    {/* Apply now section */}
                     <div className=" text-center p-4 border_light bg_graylignt mt-5">
                       <div className="">
                         <h2 className=" ff_primary fw-medium fs_4xl text_dark">
@@ -319,6 +215,7 @@ function DesignCreative() {
                         Apply now
                       </button>
                     </div>
+                    {/* Company information section */}
                     <div className=" border_semisecondary bg_secondary p-3 rounded-3 mt-4">
                       <div className=" d-flex align-items-center ">
                         <img src={avatarImage} alt="" />
@@ -352,7 +249,6 @@ function DesignCreative() {
                         {" "}
                         Read more
                       </a>
-                      
                     </div>{" "}
                   </Col>
                 </Row>

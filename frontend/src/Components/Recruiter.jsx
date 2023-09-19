@@ -23,6 +23,7 @@ export default function Recruiter() {
     ? "http://localhost:8000/jobapply/getuserappliedjob/"
     : `http://localhost:8000/addjob/getuserjob/${user.id}/`;
 
+  // Function to fetch and set post data
   const postHandler = () => {
     axios.defaults.headers.common["Authorization"] = `Bearer ${getToken()}`;
     axios
@@ -37,6 +38,7 @@ export default function Recruiter() {
       });
   };
 
+  // Function to fetch job user details
   const getPostUserHandler = (id) => {
     axios.defaults.headers.common["Authorization"] = `Bearer ${getToken()}`;
     axios
@@ -57,6 +59,7 @@ export default function Recruiter() {
       });
   };
 
+  // Function to handle status change
   const statusHandler = (id, userStatus) => {
     axios.defaults.headers.common["Authorization"] = `Bearer ${getToken()}`;
     axios
@@ -78,12 +81,12 @@ export default function Recruiter() {
       });
   };
 
+  // Function to navigate to view candidate page
   const handleOnViewCandidate = (id) => {
     navigate(`/ApplicationTracking/ViewCandidate/${id}`)
   }
 
-  console.log("before aftere", jobUserDetails);
-
+  // Function to calculate progress bar width
   const progressBar = () => {
     let progress = "50%";
     if (selectedPost.status == "pending") {
@@ -94,6 +97,7 @@ export default function Recruiter() {
     return progress;
   };
 
+  // Function to determine recruiter action status
   const recruiterAction = () => {
     let status = "Awaiting Recruiter";
     if (selectedPost.status == "approved") {
@@ -191,7 +195,7 @@ export default function Recruiter() {
                             Job posted on {date_posted}
                           </button>
                           <p className=" ff_primary fw-medium fs_xsm text_dark mb-0 pt-3 pt-sm-0">
-                            
+                            {/* Add job details here */}
                           </p>
                         </div>
                       </div>

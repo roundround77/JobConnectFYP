@@ -20,8 +20,10 @@ const Applyjob = () => {
   const [selectedVideo, setSelectedVideo] = useState(null);
 
   const handleFileChange = (event) => {
+    // Handle file input change for uploading video
     setSelectedVideo(event.target.files[0]);
   };
+
   const postHandler = (e) => {
     e.preventDefault();
     const formData = new FormData();
@@ -32,15 +34,15 @@ const Applyjob = () => {
     formData.append("experience", experience);
     formData.append("required_salary", salary);
     formData.append("skills", skills);
-    formData.append("description","-");
-    formData.append("image",selectedImage);
+    formData.append("description", "-");
+    formData.append("image", selectedImage);
+    
     axios.defaults.headers.common["Authorization"] = `Bearer ${getToken()}`;
     axios
       .post("http://localhost:8000/jobapply/applyjob/", formData)
       .then((response) => {
         // Handle the data returned from the API
         navigate("/ApplicationTracking");
-        this.setState({ responseData: response.data });
       })
       .catch((error) => {
         // Handle errors
@@ -49,33 +51,44 @@ const Applyjob = () => {
   };
 
   const handleSkills = (e) => {
+    // Handle input change for skills
     setSkills(e.target.value);
   };
+
   const handleQualification = (e) => {
+    // Handle input change for qualification
     setQualification(e.target.value);
   };
+
   const handleSalary = (e) => {
+    // Handle input change for salary
     setSalary(e.target.value);
   };
+
   const handleExperience = (e) => {
+    // Handle input change for experience
     setExperience(e.target.value);
   };
 
   useEffect(() => {
     if (!user.is_client) {
+      // Redirect to home if the user is not a client
       navigate("/");
     }
   }, []);
 
   useEffect(() => {
+    // Scroll to the top when the component is mounted
     window.scrollTo(0, 0);
   }, []);
-  
+
   return (
     <>
+      {/* Application Form Section */}
       <section className="py-5">
         <Container>
           <div className="d-flex align-items-center">
+            {/* Breadcrumbs */}
             <p className="mb-0 me-2 text_darktertiary  fs_lg fw-normal ff_primary">
               Home
             </p>
@@ -86,11 +99,13 @@ const Applyjob = () => {
           </div>
           <div className=" d-flex align-items-center justify-content-between">
             <div>
+              {/* Page Title */}
               <p className="mb-0 text_dark fw-bold  ff_primary fs_8xl">
                 Apply a job post
               </p>
             </div>
             <div>
+              {/* Apply Button */}
               <a
                 href="#"
                 onClick={postHandler}
@@ -100,6 +115,7 @@ const Applyjob = () => {
               </a>
             </div>
           </div>
+          {/* Basic Info Section */}
           <p className=" fs_xl ff_primary fw-medium text-dark mt-4">
             Basic Info <span className="text_red">*</span>
           </p>
@@ -200,7 +216,7 @@ const Applyjob = () => {
                     </Col>
                   </Row>
                   <Row>
-                    {/* upload video code */}
+                    {/* Upload Video */}
                     <Col>
                       <label
                         className=" fs_lg ff_primary fw-medium opacity-75 mt-4"
@@ -217,7 +233,6 @@ const Applyjob = () => {
                       />
                     </Col>
                   </Row>
-          
                 </form>
               </div>
             </Col>

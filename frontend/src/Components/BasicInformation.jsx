@@ -8,12 +8,14 @@ import white_arrow from "../Assets/images/svg/white_arrow.png";
 import arrow1 from "../Assets/images/svg/arrow1.png";
 
 export default function BasicInformation() {
+  // Define state variables to manage user-selected data
   const [selectedImage, setSelectedImage] = useState(null);
   const [selectedCoverImage, setSelectedCoverImage] = useState(null);
   const [selectedFile, setSelectedFile] = useState(null);
   const [selectedVideo, setSelectedVideo] = useState(null);
   const [selectedVideoName, setSelectedVideoName] = useState("");
 
+  // Event handler for video file selection
   const handleVideoChange = (event) => {
     const file = event.target.files[0];
     if (file && file.type.includes("video/")) {
@@ -22,10 +24,13 @@ export default function BasicInformation() {
     }
   };
 
+  // Event handler for file (resume) selection
   const handleFileChange = (event) => {
     const file = event.target.files[0];
     if (file) {
+      // Define allowed file extensions
       const allowedExtensions = ["doc", "docx", "pdf"];
+      // Get the file extension of the selected file
       const fileExtension = file.name.split(".").pop().toLowerCase();
       if (allowedExtensions.includes(fileExtension)) {
         setSelectedFile(file);
@@ -34,12 +39,16 @@ export default function BasicInformation() {
       }
     }
   };
+
+  // Event handler for user photo selection
   const handleImageChange = (event) => {
     const file = event.target.files[0];
     if (file) {
       setSelectedImage(URL.createObjectURL(file));
     }
   };
+
+  // Event handler for cover image selection
   const handleCoverImageChange = (event) => {
     const file = event.target.files[0];
     if (file) {
@@ -53,9 +62,11 @@ export default function BasicInformation() {
         <Container>
           <Row>
             <Col xs={12} lg={8}>
+              {/* Section title */}
               <h1 className=" ff_secondary fw-medium fs_2xl text_dark">
                 Basic Information
               </h1>
+              {/* User photo and cover image selection */}
               <div className=" bg_secondary box_shadow1 rounded-4 mt-5 pb-5 px-4">
                 <Row>
                   <Col className=" pt-3" xs={6} sm={4}>
@@ -76,6 +87,7 @@ export default function BasicInformation() {
                       }}
                     >
                       {selectedImage ? (
+                        // Display selected user photo if available
                         <img
                           src={selectedImage}
                           alt="Selected"
@@ -87,6 +99,7 @@ export default function BasicInformation() {
                           }}
                         />
                       ) : (
+                        // Display '+' symbol if no user photo is selected
                         <p
                           style={{
                             fontSize: "30px",
@@ -95,6 +108,7 @@ export default function BasicInformation() {
                           +
                         </p>
                       )}
+                      {/* Input element for user photo selection */}
                       <input
                         type="file"
                         accept="image/*"
@@ -109,21 +123,6 @@ export default function BasicInformation() {
                           cursor: "pointer",
                         }}
                       />
-
-                      {/* <img src={man_images} alt="man_images" /> */}
-                      {/* <img
-                        className=" position-absolute top8_left34"
-                        src={symbols_delete}
-                        alt="symbols_delete"
-                      /> */}
-                      {/* <div className=" mt-2 text-center" style={{}}>
-                        <p className=" text_dark fs_md ff_primary fw-normal opacity_6 mb-0">
-                          Maximum file
-                        </p>
-                        <p className=" text_dark fs_md ff_primary fw-normal opacity_6 mb-0">
-                          size: 1400kb.
-                        </p>
-                      </div> */}
                     </div>
                   </Col>
                   <Col className=" pt-3" xs={12} sm={8}>
@@ -135,6 +134,7 @@ export default function BasicInformation() {
                       className="bg_lightbrown border_dashed w-100 h_151 d-flex align-items-center justify-content-center rounded-4"
                     >
                       {selectedCoverImage ? (
+                        // Display selected cover image if available
                         <img
                           src={selectedCoverImage}
                           alt="Selected"
@@ -146,6 +146,7 @@ export default function BasicInformation() {
                           }}
                         />
                       ) : (
+                        // Display upload UI if no cover image is selected
                         <div>
                           <div className=" text-center">
                             <img src={arrow2} alt="arrow2" />
@@ -156,6 +157,7 @@ export default function BasicInformation() {
                         </div>
                       )}
 
+                      {/* Input element for cover image selection */}
                       <input
                         type="file"
                         accept="image/*"
@@ -173,6 +175,7 @@ export default function BasicInformation() {
                     </div>
                   </Col>
                 </Row>
+                {/* User personal information form */}
                 <form className="mt-4" action="#">
                   <Row>
                     <Col xs={12} sm={6}>
@@ -229,6 +232,7 @@ export default function BasicInformation() {
                   </Row>
                 </form>
               </div>
+              {/* Resume and Video Profile sections */}
               <Row className=" mt-4">
                 <Col xs={12} sm={6}>
                   <div className=" bg_secondary box_shadow1 rounded-4 px-4 pt-4 pb-3 h-100">
@@ -249,6 +253,7 @@ export default function BasicInformation() {
                         >
                           <img src={white_arrow} alt="white_arrow" />
                         </label>
+                        {/* Input element for resume file selection */}
                         <input
                           type="file"
                           accept=".doc,.docx, .pdf"
@@ -271,7 +276,7 @@ export default function BasicInformation() {
                       </p>
                     )}
                     <p className=" mb-0 fs_md ff_primary fw-normal opacity_6 text_dark mt-2">
-                      Upload file: doc, docx,pdf
+                      Upload file: doc, docx, pdf
                     </p>
                   </div>
                 </Col>
@@ -281,7 +286,7 @@ export default function BasicInformation() {
                       Video Profile
                     </h1>
                     <p className=" mb-0 ff_primary text_dark fs_md fw-medium mt-3">
-                      Improve your hiring changes by 35%
+                      Improve your hiring chances by 35%
                     </p>
                     <div className=" d-flex align-items-center mt-2">
                       <div className=" bg_semiprimary w_109 h_40 rounded-5 d-flex align-items-center justify-content-center">
@@ -292,6 +297,7 @@ export default function BasicInformation() {
                         >
                           <img src={white_arrow} alt="white_arrow" />
                         </label>
+                        {/* Input element for video file selection */}
                         <input
                           type="file"
                           accept="video/*"
@@ -318,6 +324,7 @@ export default function BasicInformation() {
                   </div>
                 </Col>
               </Row>
+              {/* Additional personal information */}
               <div className=" bg_secondary box_shadow1 rounded-4 mt-5 pb-4 pt-2 px-4 mb-5">
                 <form className="mt-4" action="#">
                   <Row>

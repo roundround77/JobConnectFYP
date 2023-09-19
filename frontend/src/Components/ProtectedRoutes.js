@@ -4,18 +4,21 @@ import LoginPage from "../Pages/Login/LoginPage";
 import SignIn from "../Pages/SignIn/SignIn";
 
 export default function ProtectedRoutes(props) {
-
-    const navigate=useNavigate()
+    const navigate = useNavigate();
     const { Component } = props;
-    const { getToken } = AuthUser()
-    const user = getToken()
-    if (user==null) {
-    
-       return <SignIn/>
+    const { getToken } = AuthUser();
+    const user = getToken();
+
+    // Check if the user is authenticated (has a token)
+    if (user == null) {
+        // If not authenticated, render the SignIn component
+        return <SignIn />;
     }
-  return (
-    <div>
-      <Component />
-    </div>
-  );
+
+    // If authenticated, render the specified Component
+    return (
+        <div>
+            <Component />
+        </div>
+    );
 }

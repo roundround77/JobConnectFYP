@@ -1,3 +1,4 @@
+// Import necessary libraries and assets
 import React, { useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import Create_account from "../../Assets/images/png/Create_account.png";
@@ -12,20 +13,24 @@ import AuthUser from "../../Components/AuthUser";
 import { useNavigate } from "react-router-dom";
 
 function LoginPage() {
-  const [email, setEmail] = useState();
-  const [username, setusername] = useState("");
-  const [confirm_password, setconfirm_password] = useState("");
-  const [password, setPassword] = useState();
-  const [Is_client, setIs_client] = useState(true);
+  // State variables for form inputs and errors
+  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
+  const [confirm_password, setConfirmPassword] = useState("");
+  const [password, setPassword] = useState("");
+  const [isClient, setIsClient] = useState(true); // Boolean to track user type
   const [error, setError] = useState({
     email: "",
     password: "",
     username: "",
   });
 
+  // AuthUser hook for authentication
   const { http, setToken } = AuthUser();
   const [msg, setMsg] = useState("");
   const navigate = useNavigate();
+
+  // Function to handle form submission
   const login = (e) => {
     e.preventDefault();
     http
@@ -34,8 +39,8 @@ function LoginPage() {
         password: password,
         username: username,
         confirm_password: password,
-        is_creator: !Is_client,
-        is_client: Is_client,
+        is_creator: !isClient, // Setting is_creator based on isClient
+        is_client: isClient,
       })
       .then((res) => {
         if (res.data.success) {
@@ -69,11 +74,12 @@ function LoginPage() {
       });
   };
 
+  // Functions to handle input changes
   const handleEmail = (e) => {
     setEmail(e.target.value);
   };
   const handleUsername = (e) => {
-    setusername(e.target.value);
+    setUsername(e.target.value);
   };
   const handlePassword = (e) => {
     setPassword(e.target.value);
@@ -81,9 +87,10 @@ function LoginPage() {
 
   return (
     <>
+      {/* Login form section */}
       <section className="bg_darklight py-5">
         <Container>
-          <Row className=" align-items-center justify-content-between">
+          <Row className="align-items-center justify-content-between">
             <Col xs={12} md={6}>
               <img
                 className="w-100"
@@ -92,42 +99,44 @@ function LoginPage() {
               />
             </Col>
             <Col xs={12} md={6} xl={5}>
-              <div className=" bg_secondary px-lg-5 px-3 py-4 rounded-2 box_shadowLogin mt-4 mt-md-0">
-                <p className=" ff_primary fs_lg fw-normal text_darktertiary">
+              <div className="bg_secondary px-lg-5 px-3 py-4 rounded-2 box_shadowLogin mt-4 mt-md-0">
+                <p className="ff_primary fs_lg fw-normal text_darktertiary">
                   Welcome! 👋
                 </p>
-                <h2 className=" ff_primary fw-bold fs_4xl text_dark">
+                <h2 className="ff_primary fw-bold fs_4xl text_dark">
                   Create your account
                 </h2>
-                <div className=" d-lg-flex mt-3">
+                <div className="d-lg-flex mt-3">
+                  {/* Toggle between "Candidate" and "Employer" */}
                   <button
                     style={{
-                      backgroundColor: Is_client ? "blue" : "lightgray",
-                      color: Is_client ? "white" : "black",
+                      backgroundColor: isClient ? "blue" : "lightgray",
+                      color: isClient ? "white" : "black",
                     }}
-                    onClick={() => setIs_client(true)}
-                    className=" d-flex border-0  ff_primary fs_lg fw-medium py-2 px-4 rounded-2 d-inline-block"
+                    onClick={() => setIsClient(true)}
+                    className="d-flex border-0 ff_primary fs_lg fw-medium py-2 px-4 rounded-2 d-inline-block"
                   >
                     <img className="pe-2" src={Candidate} alt="Candidate" />
                     Candidate
                   </button>
                   <button
                     style={{
-                      backgroundColor: Is_client ? "lightgray" : "blue",
-                      color: Is_client ? "black" : "white",
+                      backgroundColor: isClient ? "lightgray" : "blue",
+                      color: isClient ? "black" : "white",
                     }}
-                    onClick={() => setIs_client(false)}
-                    className=" d-flex  border-0  ff_primary fs_lg fw-medium py-2 px-4 rounded-2 ms-lg-3 mt-4 mt-lg-0 d-inline-block"
+                    onClick={() => setIsClient(false)}
+                    className="d-flex border-0 ff_primary fs_lg fw-medium py-2 px-4 rounded-2 ms-lg-3 mt-4 mt-lg-0 d-inline-block"
                   >
                     <img className="pe-2" src={Employer} alt="Employer" />
                     Employer
                   </button>
                 </div>
 
+                {/* Registration form */}
                 <form className="pt-4" onSubmit={login}>
                   <label
                     htmlFor="FullName"
-                    className=" ff_primary fs_lg fw-medium lowsecondary"
+                    className="ff_primary fs_lg fw-medium lowsecondary"
                   >
                     Full name
                   </label>
@@ -150,7 +159,7 @@ function LoginPage() {
                   )}
                   <label
                     htmlFor="FullName"
-                    className=" ff_primary fs_lg fw-medium lowsecondary mt-3"
+                    className="ff_primary fs_lg fw-medium lowsecondary mt-3"
                   >
                     Email address
                   </label>
@@ -173,7 +182,7 @@ function LoginPage() {
                   )}
                   <label
                     htmlFor="FullName"
-                    className=" ff_primary fs_lg fw-medium lowsecondary mt-3"
+                    className="ff_primary fs_lg fw-medium lowsecondary mt-3"
                   >
                     Password
                   </label>
@@ -194,30 +203,29 @@ function LoginPage() {
                       {error.password}
                     </p>
                   )}
-                  <div className=" d-flex align-items-center mt-4">
+                  <div className="d-flex align-items-center mt-4">
                     <input type="checkbox" />
-                    <p className=" ff_primary fw-normal fs_lg text_dark opacity-50 mb-0 ms-3">
+                    <p className="ff_primary fw-normal fs_lg text_dark opacity-50 mb-0 ms-3">
                       I have read and agree to the Terms of Service
                     </p>
                   </div>
-                  <button className=" ff_primary fs_lg fw-medium text_secondary bg_semiprimary mt-5 border-0 rounded-2 py-3 w-100">
-                    Sign Up{" "}
+                  <button className="ff_primary fs_lg fw-medium text_secondary bg_semiprimary mt-5 border-0 rounded-2 py-3 w-100">
+                    Sign Up
                   </button>
-                  <p className=" ff_primary fw-medium fs_md text_semiprimary text-center mt-4">
+                  <p className="ff_primary fw-medium fs_md text_semiprimary text-center mt-4">
                     or
                   </p>
                 </form>
               </div>
-              <div className=" d-flex align-items-center justify-content-center pt-4">
+              <div className="d-flex align-items-center justify-content-center pt-4">
                 <img src={GoogleIcon} alt="GoogleIcon" />
-                <p className=" ff_primary fw-medium text-dark fs_lg mb-0 ms-3">
+                <p className="ff_primary fw-medium text-dark fs_lg mb-0 ms-3">
                   Connect with Google
                 </p>
               </div>
-              <p className=" ff_primary fw-normal fs_lg text_dark text-center mt-4">
+              <p className="ff_primary fw-normal fs_lg text_dark text-center mt-4">
                 Already have an account?
                 <Link to="/SignIn" className="text_orange">
-                  {" "}
                   Sign In
                 </Link>
               </p>

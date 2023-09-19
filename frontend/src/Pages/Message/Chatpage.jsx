@@ -1,3 +1,4 @@
+// Import required styles and components
 import styles from "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
 import {
   MainContainer,
@@ -10,10 +11,14 @@ import React, { useState, useEffect } from "react";
 import AuthUser from "../../Components/AuthUser";
 import axios from "axios";
 
+// Initialize an empty array for chat messages
 const messagesData = [];
 
 const Chatpage = ({ selected, currentUser }) => {
+  // Get authentication information
   const { http, getToken, user } = AuthUser();
+
+  // Define state variables for message input and chat messages
   const [messageInput, setmessageInput] = useState({
     message: "",
     sentTime: "just now",
@@ -22,6 +27,7 @@ const Chatpage = ({ selected, currentUser }) => {
   });
   const [messages, setmessages] = useState(messagesData);
 
+  // Handle changes in the message input field
   const handleMessageInput = (e) => {
     setmessageInput({
       message: e,
@@ -30,6 +36,8 @@ const Chatpage = ({ selected, currentUser }) => {
       direction: "outgoing",
     });
   };
+
+  // Handle sending a message
   const handleSend = () => {
     setmessages([...messages, messageInput]);
     setmessageInput({
@@ -41,6 +49,7 @@ const Chatpage = ({ selected, currentUser }) => {
     sendChatHandler();
   };
 
+  // Send a chat message to the server
   const sendChatHandler = () => {
     axios.defaults.headers.common["Authorization"] = `Bearer ${getToken()}`;
     axios
@@ -56,6 +65,7 @@ const Chatpage = ({ selected, currentUser }) => {
       });
   };
 
+  // Retrieve chat messages between users
   const chatUserHandler = () => {
     axios.defaults.headers.common["Authorization"] = `Bearer ${getToken()}`;
     axios
@@ -87,20 +97,18 @@ const Chatpage = ({ selected, currentUser }) => {
       });
   };
 
-  useEffect(
-    (e) => {
-      chatUserHandler();
-    },
-    [selected]
-  );
-  console.log("ucser chk", messages, selected.username);
+  // Load chat messages when the selected user changes
+  useEffect(() => {
+    chatUserHandler();
+  }, [selected]);
 
-  // const[chatname,setChatname]=useState('')
-  var chatuser=(String(selected.username)).toUpperCase()
+  // Format the chat user's name
+  var chatuser = (String(selected.username)).toUpperCase();
+
   return (
     <div style={{ position: "relative", height: "500px" }}>
-      <span>Your are chatting with :-</span>
-    <p style={{"letterSpacing":"2px","-webkit-text-stroke": "1px blue","padding":"0 10px","display":"inline-block"}}> {chatuser}</p>
+      <span>You are chatting with:</span>
+      <p style={{ "letterSpacing": "2px", "-webkit-text-stroke": "1px blue", "padding": "0 10px", "display": "inline-block" }}> {chatuser}</p>
       <MainContainer>
         <ChatContainer>
           <MessageList>
