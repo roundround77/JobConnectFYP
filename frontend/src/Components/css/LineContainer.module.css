@@ -1,0 +1,92 @@
+/* LineContainer.module.css */
+
+.line-container {
+  margin-top: 3vh;
+  margin-bottom: 2.5vh;
+  display: flex;
+  width: 100%;
+}
+
+.progress-line {
+  position: relative;
+  margin: 0 auto;
+  border-radius: 10px;
+  width: 90%;
+  background: grey;
+  height: 5px;
+  z-index: -1;
+  display: flex;
+  justify-content: space-between;
+}
+
+.progress {
+  position: absolute;
+  width: 75%;
+  height: 100%;
+  background: green;
+  transition: width 1s ease-in-out;
+}
+
+.status {
+  position: relative;
+  top: -9.5px;
+}
+
+.dot {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: white;
+  border: 5px solid grey;
+  cursor: pointer;
+}
+
+.dot.current {
+  background: white;
+  border: 5px solid green;
+}
+
+.dot.completed {
+  position: relative;
+  background: green;
+  border: 5px solid green;
+}
+.dot.rejected {
+  position: relative;
+  background: red;
+  border: 5px solid red;
+}
+
+.dot.completed::after {
+  content: "";
+  position: absolute;
+  top: calc(50% - 5px);
+  left: calc(50% - 5.5px);
+  height: 5px;
+  width: 10px;
+  border-left: 2px solid white;
+  border-bottom: 2px solid white;
+  transform-origin: center;
+  transform: rotate(-45deg);
+  z-index: 2;
+}
+.dot.rejected::after,
+.dot.rejected::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 3px;
+  width: 10px;
+  background-color: white;
+  transform-origin: center;
+  z-index: 2;
+}
+
+.dot.rejected::after {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.dot.rejected::before {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}

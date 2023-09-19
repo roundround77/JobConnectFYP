@@ -1,0 +1,66 @@
+import avatar_uxper from "../Assets/images/png/avatar_uxper.png";
+import ux_ui_designer from "../Assets/images/png/ux_ui_designer.png";
+const DreamJobsData = [
+  {
+    id: 1,
+    image: avatar_uxper,
+    heading: "  Sr. Backend Go Developer",
+    stack: " Development & IT",
+    applyDay: "7 ",
+    Ulite: "Ulite",
+    location: "San Francisco",
+    selerity: "$450 - $500/week",
+  },
+  {
+    id: 2,
+    image: ux_ui_designer,
+    heading: "UX/UI Designer",
+    stack: " Design & Creative",
+    applyDay: "7 ",
+    Ulite: "Nightfall",
+    location: "San Francisco",
+    selerity: "$450 - $500/week",
+  },
+  {
+    id: 3,
+    image: avatar_uxper,
+    heading: "  Sr. Backend Go Developer",
+    stack: " Development & IT",
+    applyDay: "7 ",
+    Ulite: "Ulite",
+    location: "San Francisco",
+    selerity: "$450 - $500/week",
+  },
+  {
+    id: 4,
+    image: ux_ui_designer,
+    heading: "UX/UI Designer",
+    stack: " Design & Creative",
+    applyDay: "7 ",
+    Ulite: "Nightfall",
+    location: "San Francisco",
+    selerity: "$450 - $500/week",
+  },
+  {
+    id: 5,
+    image: avatar_uxper,
+    heading: "  Sr. Backend Go Developer",
+    stack: " Development & IT",
+    applyDay: "7 ",
+    Ulite: "Ulite",
+    location: "San Francisco",
+    selerity: "$450 - $500/week",
+  },
+  {
+    id: 6,
+    image: ux_ui_designer,
+    heading: "UX/UI Designer",
+    stack: " Design & Creative",
+    applyDay: "7 ",
+    Ulite: "Nightfall",
+    location: "San Francisco",
+    selerity: "$450 - $500/week",
+  },
+ 
+];
+export default DreamJobsData;

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>chat box</h1>
+    <textarea id="chat-log" cols="50" rows="20">
+        {% for i in data %}
+        {{i.content}}
+        {% endfor %}
+    </textarea><br>
+    <input type="text" id="input"><br>
+    <input type="submit" value="Send" id="send">
+    {{groupname|json_script:'group'}}
+    <script>
+        const groupname = JSON.parse(document.getElementById("group").textContent)
+        var ws = new WebSocket('ws://' + window.location.host + "/jwac/" + groupname + '/')
+        ws.onopen = function () {
+            console.log('yes connection is occured')
+        }
+        ws.onmessage = function (event) {
+            console.log('msg from server', event.data)
+            data = JSON.parse(event.data)
+
+            document.querySelector("#chat-log").value += data.user + ':' + data.msg + '\n'
+        }
+        ws.onerror = function (event) {
+            console.log('error is occured', event)
+        }
+        ws.onclose = function (event) {
+            console.log('connection is closed so sad', event)
+        }
+        document.getElementById('send').onclick = function (event) {
+            data = document.getElementById("input")
+            ws.send(JSON.stringify({
+                'msg': data.value
+            }))
+            data.value = ''
+        }
+    </script>
+</body>
+
+</html>
