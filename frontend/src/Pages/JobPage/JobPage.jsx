@@ -6,27 +6,15 @@ import LocationIcon from "../../Assets/images/png/LocationIcon.png";
 import FileIcon from "../../Assets/images/png/FileIcon.png";
 import BoxesIcon from "../../Assets/images/png/BoxesIcon.png";
 import ThreelineIcon from "../../Assets/images/png/ThreelineIcon.png";
-import avatar_uxper from "../../Assets/images/png/avatar_uxper.png";
 import icon_featured from "../../Assets/images/png/icon_featured.png";
 import LightIcon from "../../Assets/images/svg/LightIcon.png";
 import Link from "../../Assets/images/svg/Link.png";
 import Icon from "../../Assets/images/png/Icon.png";
-import ux_ui_designer from "../../Assets/images/png/ux_ui_designer.png";
-import discript_logo from "../../Assets/images/png/descript_logo.png";
-import mercury_logo from "../../Assets/images/png/mercury_logo.png";
-import yoko_co from "../../Assets/images/png/yoko_co.png";
-import netomi_logo from "../../Assets/images/png/netomi_logo.png";
-import cleo_logo from "../../Assets/images/png/cleo_logo.png";
-import superside_logo from "../../Assets/images/png/superside_logo.png";
-import multipleicon from "../../Assets/images/png/multipleicon.png";
-import rightangle from "../../Assets/images/png/rightangle.png";
-import DreamJobsData from "../../DummyData/DreamJobsData";
 import DownArrow from "../../Assets/images/svg/DownArrow.svg";
 import Filter from "../../DummyData/Filter";
 import JobsExperience from "../../DummyData/JobsExperience";
 import JobsCareer from "../../DummyData/JobsCareer";
 import { NavLink, useNavigate } from "react-router-dom";
-import RightArrow from "../../Assets/images/svg/RightArrow.svg";
 import Close_icon from "../../Assets/images/png/Close_icon.png";
 import { useEffect } from "react";
 import AuthUser from "../../Components/AuthUser";
@@ -259,7 +247,7 @@ function JobPage() {
                   id,
                   title,
                   company,
-                  career_level,
+                  carrer_level,
                   stack,
                   hiring_location,
                   applyDay,
@@ -305,7 +293,7 @@ function JobPage() {
                           <p className="fs_xl ff_primary text_darktertiary fw-medium">
                             by
                             <span className=" text_semidark">
-                              {career_level}
+                              {carrer_level}
                             </span>
                             in
                             <span className="fs_xl fw-medium ff_primary text_semiprimary">

@@ -1,7 +1,6 @@
 // Import necessary libraries and assets
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import arrow1 from "../../Assets/images/svg/arrow1.png";
 import rightangle from "../../Assets/images/png/rightangle.png";
 import AuthUser from "../../Components/AuthUser";
 import axios from "axios";
