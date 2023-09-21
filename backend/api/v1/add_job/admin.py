@@ -6,7 +6,7 @@ from .models import AddJob  # Import the AddJob model from your app's models mod
 # Create an admin class for the AddJob model.
 class AddJobAdmin(admin.ModelAdmin):
     # Define the fields to be displayed in the admin list view.
-    list_display = ['id', 'closing_date', 'hiring_location', 'offered_salary', 'carrer_level',
+    list_display = ['id', 'closing_date', 'hiring_location', 'offered_salary', 'career_level',
                     'qualification', 'experience', 'quantity', 'gender', 'overview',
                     'skill_and_experience', 'skills', 'requirements', 'title', 'user',
                     'image', 'created_at', 'updated_at', 'date_posted']

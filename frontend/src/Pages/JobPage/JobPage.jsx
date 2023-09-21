@@ -259,7 +259,7 @@ function JobPage() {
                   id,
                   title,
                   company,
-                  carrer_level,
+                  career_level,
                   stack,
                   hiring_location,
                   applyDay,
@@ -305,7 +305,7 @@ function JobPage() {
                           <p className="fs_xl ff_primary text_darktertiary fw-medium">
                             by
                             <span className=" text_semidark">
-                              {carrer_level}
+                              {career_level}
                             </span>
                             in
                             <span className="fs_xl fw-medium ff_primary text_semiprimary">

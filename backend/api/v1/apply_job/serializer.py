@@ -8,7 +8,7 @@ from ..authentication.models import User
 class ApplyForJobSerializer(serializers.ModelSerializer):
     class Meta:
         model = ApplyForJob
-        fields = ['id', 'date_posted', 'status', 'carrer_level', 'video', 'qualification', 'experience', 'skills', 'required_salary', 'user', 'job', 'description']
+        fields = ['id', 'date_posted', 'status', 'career_level', 'video', 'qualification', 'experience', 'skills', 'required_salary', 'user', 'job', 'description']
 
 # Create a serializer class for CandidateUser model (User).
 class CandidateUserSerializer(serializers.ModelSerializer):

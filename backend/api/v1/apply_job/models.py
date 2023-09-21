@@ -28,7 +28,7 @@ class ApplyForJob(models.Model):
     video = models.FileField(upload_to="job_video", null=True, blank=True)
 
     # Define a CharField for career level with a default value.
-    carrer_level = models.CharField(max_length=20, default="Graduation")
+    career_level = models.CharField(max_length=20, default="Graduation")
 
     # Define a CharField for qualification.
     qualification = models.CharField(max_length=20)

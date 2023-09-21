@@ -11,7 +11,7 @@ class AddJobSerializer(serializers.ModelSerializer):
         model = AddJob  # Specify the model that this serializer is based on.
         # Define the fields to be included in the serialized representation.
         fields = [
-            'id', 'closing_date', 'hiring_location', 'offered_salary', 'carrer_level',
+            'id', 'closing_date', 'hiring_location', 'offered_salary', 'career_level',
             'qualification', 'experience', 'quantity', 'gender', 'overview',
             'skill_and_experience', 'skills', 'requirements', 'title', 'user', 'image',
             'video', 'date_posted', 'company'

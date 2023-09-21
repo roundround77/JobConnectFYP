@@ -36,7 +36,7 @@ class AddJob(models.Model):
     offered_salary = models.CharField(max_length=100)
 
     # Define the career level field for the job
-    carrer_level = models.CharField(max_length=20, default="JUN")
+    career_level = models.CharField(max_length=20, default="JUN")
 
     # Define the qualification field for the job
     qualification = models.CharField(max_length=20, default="Btech")
