@@ -1,4 +1,5 @@
 // Import required styles and components
+import styles from "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
 import {
   MainContainer,
   ChatContainer,
@@ -15,7 +16,7 @@ const messagesData = [];
 
 const Chatpage = ({ selected, currentUser }) => {
   // Get authentication information
-  const { getToken, user } = AuthUser();
+  const { http, getToken, user } = AuthUser();
 
   // Define state variables for message input and chat messages
   const [messageInput, setmessageInput] = useState({
@@ -73,8 +74,8 @@ const Chatpage = ({ selected, currentUser }) => {
         let myMessage = resp.data.data
           .filter((val) => {
             if (
-              (val.senderUser === user.id && val.recieverUser === selected.id) ||
-              (val.senderUser === selected.id && val.recieverUser === user.id)
+              (val.senderUser == user.id && val.recieverUser == selected.id) ||
+              (val.senderUser == selected.id && val.recieverUser == user.id)
             ) {
               return true;
             }

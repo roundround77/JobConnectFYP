@@ -2,6 +2,15 @@ import { useEffect } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import Arrow from "../../Assets/images/svg/Arrow.svg";
 import { Link, NavLink, Outlet } from "react-router-dom";
+import Application from "../../DummyData/Application";
+import LightIcon from "../../Assets/images/svg/LightIcon.png";
+import link from "../../Assets/images/svg/Link.png";
+import TickCircle from "../../Assets/images/svg/TickCircle.svg";
+import closeIcon from "../../Assets/images/svg/closeIcon.svg";
+import mdi_user from "../../Assets/images/svg/mdi_user.svg";
+import avatar_uxper from "../../Assets/images/png/avatar_uxper.png";
+import icon_featured from "../../Assets/images/png/icon_featured.png";
+import Recruiter from "../../Components/Recruiter";
 import AuthUser from "../../Components/AuthUser";
 
 function ApplicationTracking() {
